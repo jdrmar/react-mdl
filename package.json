@@ -91,7 +91,7 @@
   },
   "scripts": {
     "clean": "rm -rf coverage lib out",
-    "test": "mocha --compilers js:babel-core/register -r tests.setup.js src/**/Badge*-test.js",
+    "test": "mocha --compilers js:babel-core/register -r tests.setup.js src/**/Card*-test.js",
     "posttest": "npm run lint",
     "test:watch": "karma start --auto-watch",
     "lint": "eslint docs src scripts",
