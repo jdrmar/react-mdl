@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import mdlUpgrade from './utils/mdlUpgrade';
 
+// eslint-disable-next-line react/prefer-stateless-function
 class Spinner extends React.Component {
     static propTypes = {
         className: PropTypes.string,

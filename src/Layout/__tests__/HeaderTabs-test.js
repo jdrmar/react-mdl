@@ -47,17 +47,13 @@ describe('Layout', () => {
                 done();
             };
 
-            class MDLWrapper extends React.Component {
-                render() {
-                    return (
-                        <HeaderTabs activeTab={0} onChange={cb}>
-                            <Tab>Tab1</Tab>
-                            <Tab>Tab2</Tab>
-                            <Tab>Tab3</Tab>
-                        </HeaderTabs>
-                    );
-                }
-            }
+            const MDLWrapper = () => (
+                <HeaderTabs activeTab={0} onChange={cb}>
+                    <Tab>Tab1</Tab>
+                    <Tab>Tab2</Tab>
+                    <Tab>Tab3</Tab>
+                </HeaderTabs>
+            );
             const el = renderDOM(<MDLWrapper />);
             TestUtils.Simulate.click(el.children[1]);
         });

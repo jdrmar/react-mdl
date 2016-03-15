@@ -17,37 +17,33 @@ const templateSections = Object.keys(Templates).map(template => ({
     label: template
 }));
 
-class DocApp extends React.Component {
-    render() {
-        return (
-            <Layout fixedHeader fixedDrawer style={{ zIndex: 100001 }}>
-                <Header title="React-MDL">
-                    <Navigation>
-                        <a href="https://github.com/tleunen/react-mdl">
-                            <Icon name="link" style={{ marginRight: '8px', verticalAlign: 'middle' }} />
-                            GitHub
-                        </a>
-                    </Navigation>
-                </Header>
-                <Drawer>
-                    <Navigation>
-                        <span>Components</span>
-                        {componentSections.map(e => <Link to={e.id} activeClassName="active" key={e.id}>{e.label}</Link>)}
-                        <Spacer className="drawer-separator" />
-                        <span>Templates</span>
-                        {templateSections.map(e => <Link to={e.id} key={e.id}>{e.label}</Link>)}
-                    </Navigation>
-                </Drawer>
-                <Content className="mdl-color-text--grey-600">
-                    <Grid>
-                        <Cell col={12}>
-                            {this.props.children}
-                        </Cell>
-                    </Grid>
-                </Content>
-            </Layout>
-        );
-    }
-}
+const DocApp = ({ children }) => (
+    <Layout fixedHeader fixedDrawer style={{ zIndex: 100001 }}>
+        <Header title="React-MDL">
+            <Navigation>
+                <a href="https://github.com/tleunen/react-mdl">
+                    <Icon name="link" style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                    GitHub
+                </a>
+            </Navigation>
+        </Header>
+        <Drawer>
+            <Navigation>
+                <span>Components</span>
+                {componentSections.map(e => <Link to={e.id} activeClassName="active" key={e.id}>{e.label}</Link>)}
+                <Spacer className="drawer-separator" />
+                <span>Templates</span>
+                {templateSections.map(e => <Link to={e.id} key={e.id}>{e.label}</Link>)}
+            </Navigation>
+        </Drawer>
+        <Content className="mdl-color-text--grey-600">
+            <Grid>
+                <Cell col={12}>
+                    {children}
+                </Cell>
+            </Grid>
+        </Content>
+    </Layout>
+);
 
 export default DocApp;

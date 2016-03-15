@@ -2,7 +2,7 @@ import React from 'react';
 import { findDOMNode } from 'react-dom';
 
 /* eslint no-eval: 0 */
-export default (html) =>
+export default (html) => (
     class PageComponent extends React.Component {
         componentDidMount() {
             window.componentHandler.upgradeElements(findDOMNode(this));
@@ -21,4 +21,5 @@ export default (html) =>
         render() {
             return <section dangerouslySetInnerHTML={{ __html: html }} />;
         }
-    };
+    }
+);

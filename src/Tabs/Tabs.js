@@ -9,6 +9,7 @@ const TabPropType = (props, propName, componentName) => {
     return prop.type !== Tab && new Error(`'${componentName}' only accepts 'Tab' as children.`);
 };
 
+// eslint-disable-next-line react/prefer-stateless-function
 class Tabs extends React.Component {
     static propTypes = {
         activeTab: PropTypes.number,
