@@ -89,11 +89,15 @@
     "react": ">= 0.14.0 < 16.0.0 || 15.0.0-rc.1",
     "react-dom": ">= 0.14.0 < 16.0.0 || 15.0.0-rc.1"
   },
+  "config": {
+    "isparta": "--report lcov --report json --report text",
+    "mocha": "-r tests.setup.js src/**/Badge-test.js src/**/Card*-test.js src/**/Button-test.js"
+  },
   "scripts": {
     "clean": "rm -rf coverage lib out",
-    "test": "mocha --compilers js:babel-core/register -r tests.setup.js src/**/Card*-test.js",
+    "test": "babel-node $(npm bin)/isparta cover $npm_package_config_isparta --report html $(npm bin)/_mocha -- $npm_package_config_mocha",
     "posttest": "npm run lint",
-    "test:watch": "karma start --auto-watch",
+    "test:watch": "mocha --compilers js:babel-register $npm_package_config_mocha --watch",
     "lint": "eslint docs src scripts",
     "compile": "rm -rf lib && babel src --ignore __tests__ --out-dir lib",
     "serve-docs": "npm run build-docs && webpack-dev-server --content-base out/docs/",
