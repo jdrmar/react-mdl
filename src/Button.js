@@ -1,42 +1,39 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
-import mdlUpgrade from './utils/mdlUpgrade';
+import addRipple from './Ripple';
 
-class Button extends React.Component {
-    static propTypes = {
-        accent: PropTypes.bool,
-        className: PropTypes.string,
-        colored: PropTypes.bool,
-        component: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.element,
-            PropTypes.func
-        ]),
-        href: PropTypes.string,
-        primary: PropTypes.bool,
-        raised: PropTypes.bool,
-        ripple: PropTypes.bool
-    };
+const propTypes = {
+    accent: PropTypes.bool,
+    className: PropTypes.string,
+    colored: PropTypes.bool,
+    component: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.func
+    ]),
+    href: PropTypes.string,
+    primary: PropTypes.bool,
+    raised: PropTypes.bool
+};
 
-    render() {
-        const { accent, className, colored,
-            primary, raised, ripple, component, href,
-            children, ...otherProps } = this.props;
+const Button = (props) => {
+    const { accent, className, colored,
+        primary, raised, component, href,
+        children, ...otherProps } = props;
 
-        const buttonClasses = classNames('mdl-button mdl-js-button', {
-            'mdl-js-ripple-effect': ripple,
-            'mdl-button--raised': raised,
-            'mdl-button--colored': colored,
-            'mdl-button--primary': primary,
-            'mdl-button--accent': accent
-        }, className);
+    const buttonClasses = classNames('mdl-button', {
+        'mdl-button--raised': raised,
+        'mdl-button--colored': colored,
+        'mdl-button--primary': primary,
+        'mdl-button--accent': accent
+    }, className);
 
-        return React.createElement(component || (href ? 'a' : 'button'), {
-            className: buttonClasses,
-            href,
-            ...otherProps
-        }, children);
-    }
-}
+    return React.createElement(component || (href ? 'a' : 'button'), {
+        className: buttonClasses,
+        href,
+        ...otherProps
+    }, children);
+};
 
-export default mdlUpgrade(Button);
+Button.propTypes = propTypes;
+
+export default addRipple(Button, { prefix: 'mdl-button' });
