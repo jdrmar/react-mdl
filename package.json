@@ -91,7 +91,7 @@
   },
   "config": {
     "isparta": "--report lcov --report json --report text",
-    "mocha": "-r tests.setup.js src/**/Badge-test.js src/**/Card*-test.js src/**/Button-test.js"
+    "mocha": "-r tests.setup.js src/**/Badge-test.js src/**/Card*-test.js src/**/Button-test.js src/**/Checkbox-test.js"
   },
   "scripts": {
     "clean": "rm -rf coverage lib out",

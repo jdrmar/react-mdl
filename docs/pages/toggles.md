@@ -9,10 +9,24 @@
 
 ### Checkbox
 
-```jsx
-<Checkbox label="With ripple" ripple defaultChecked />
+```jsx_demo_class
+class Demo extends React.Component {
+    constructor(p) {
+        super(p);
+        this.state = { checked: true };
+    }
+    render() {
+        return (
+            <Checkbox
+                label="With ripple"
+                ripple
+                checked={this.state.checked}
+                onChange={e => { this.setState({ checked: e.target.checked }) }}
+            />
+        );
+    }
+}
 
-<Checkbox label="Without ripple" />
 ```
 
 #### Configuration
