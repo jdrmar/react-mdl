@@ -7432,6 +7432,10 @@ input.mdl-button[type="submit"] {
     .mdl-layout.has-scrolling-header .mdl-layout__content {
       overflow-y: auto;
       overflow-x: hidden; } }
+// prevent 'jumping around' of layout elements on load      
+.mdl-layout > .mdl-layout__content {
+    display: block;
+}
 
 .mdl-layout__tab-bar {
   height: 96px;
